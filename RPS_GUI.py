@@ -3,7 +3,8 @@ import tkinter
 from PIL import Image,ImageTk
 from functools import partial
 
-# from . import RPStraining
+import RPStraining as Rp
+
 
 root = Tk()
 root.title("Rock Paper Scissor")
@@ -20,19 +21,13 @@ img = Image.open("Resources/scissor_right.png")
 scissor_right = ImageTk.PhotoImage(img.resize((400,300),Image.ANTIALIAS))
 
 
-left = Frame(root,width=400,height=200)
-left.pack(side=LEFT)
-
-right = Frame(root,width=400,height=200)
-right.pack(side=RIGHT)
-
-label1 = Label(left,image=rock)
+label1 = Label(root,image=rock)
 label1.image=rock
-label1.pack()
+label1.place(x=20,y=100)
 
-label2 = Label(right,image=paper)
+label2 = Label(root,image=paper)
 label2.image=paper
-label2.pack()
+label2.place(x=580,y=100)
 
 win_count = tie_count = lose_count = 0
 
@@ -94,43 +89,43 @@ def displayrock(side = "left"):
     if side=="left":
         global label1
         label1.destroy()
-        label1 = Label(left,image=rock)
+        label1 = Label(root,image=rock)
         label1.image=rock
-        label1.pack()
+        label1.place(x=20,y=100)
     else:
         global label2
         label2.destroy()
-        label2 = Label(right,image=rock)
+        label2 = Label(root,image=rock)
         label2.image=rock
-        label2.pack()
+        label2.place(x=580,y=100)
 
 def displaypaper(side="left"):
     if side=="left":
         global label1
         label1.destroy()
-        label1 = Label(left,image=paper)
+        label1 = Label(root,image=paper)
         label1.image=paper
-        label1.pack()
+        label1.place(x=20,y=100)
     else:
         global label2
         label2.destroy()
-        label2 = Label(right,image=paper)
+        label2 = Label(root,image=paper)
         label2.image=paper
-        label2.pack()
+        label2.place(x=580,y=100)
 
 def displayscissor(side="left"):
     if side=="left":
         global label1
         label1.destroy()
-        label1 = Label(left,image=scissor_right)
+        label1 = Label(root,image=scissor_right)
         label1.image=scissor_right
-        label1.pack()
+        label1.place(x=20,y=100)
     else:
         global label2
         label2.destroy()
-        label2 = Label(right,image=scissor_left)
+        label2 = Label(root,image=scissor_left)
         label2.image=scissor_right
-        label2.pack()
+        label2.place(x=580,y=100)
 
 import random
 def system_rand():
@@ -143,31 +138,26 @@ def system_rand():
         displayscissor(side="right")
     return n
 
-button1 = Button(text = "Rock",command=call_rock)
-button1.pack()
-button2 = Button(text = "Paper",command= call_paper)
-button2.pack()
-button3 = Button(text = "Scissor",command=call_scissor)
-button3.pack()
+button1 = Button(root,text = "Rock",command=call_rock,width = 8,height=2,highlightcolor="black",cursor="hand2")
+button1.place(x=20,y=410)
+button2 = Button(root,text = "Paper",command= call_paper,width = 8,height=2,cursor="hand2")
+button2.place(x=190,y=410)
+button3 = Button(root,text = "Scissor",command=call_scissor,width = 8,height=2,cursor="hand2")
+button3.place(x=359,y=410)
 
-frame = Frame(root,highlightbackground="Black",width=24,height=50,highlightcolor="Black")
-frame.pack()
 expression=""
 display = StringVar()
 display.set(expression)
-entry_field = Label(frame,textvariable=display,width=24,bd=0,bg="Grey",fg="White",font=("arial",18,"bold"))
-entry_field.pack(ipady=10)
-
-frame_cal = Frame(root,highlightbackground="Black",width=24,height=50,highlightcolor="Black")
-frame_cal.pack()
+entry_field = Label(root,textvariable=display,width=24,bd=0,bg="Grey",fg="White",font=("arial",18,"bold"))
+entry_field.place(x=320,y=500)
 
 count1 ,count2, count3 = StringVar(), StringVar(), StringVar()
 count1.set("Win : 0")
 count2.set("Tie : 0")
 count3.set("Lose : 0")
-Label_1 = Label(frame,textvariable=count1,width=24,bd=0,bg="black",fg="White",font=("arial",18,"bold"))
-Label_2 = Label(frame,textvariable=count2,width=24,bd=0,bg="black",fg="White",font=("arial",18,"bold"))
-Label_3 = Label(frame,textvariable=count3,width=24,bd=0,bg="black",fg="White",font=("arial",18,"bold"))
+Label_1 = Label(root,textvariable=count1,width=24,bd=0,bg="black",fg="White",font=("arial",18,"bold"))
+Label_2 = Label(root,textvariable=count2,width=24,bd=0,bg="black",fg="White",font=("arial",18,"bold"))
+Label_3 = Label(root,textvariable=count3,width=24,bd=0,bg="black",fg="White",font=("arial",18,"bold"))
 Label_1.pack()
 Label_2.pack()
 Label_3.pack()
@@ -175,5 +165,5 @@ Label_3.pack()
 
 
 
-
+root['bg']="grey"
 root = mainloop()
