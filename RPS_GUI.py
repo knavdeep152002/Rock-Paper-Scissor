@@ -48,6 +48,12 @@ def call_rock():
     count1.set("Win : "+str(win_count))
     count2.set("Tie : "+str(tie_count))
     count3.set("Lose : "+str(lose_count))
+    button1["bg"] = "black"
+    button1["fg"] = "white"
+    button2["bg"] = "white"
+    button2["fg"] = "black"
+    button3["bg"] = "white"
+    button3["fg"] = "black"
 
 def call_paper():
     global expression,win_count,tie_count,lose_count
@@ -66,7 +72,13 @@ def call_paper():
     count1.set("Win : "+str(win_count))
     count2.set("Tie : "+str(tie_count))
     count3.set("Lose : "+str(lose_count))
-
+    button2["bg"] = "black"
+    button2["fg"] = "white"
+    button1["bg"] = "white"
+    button1["fg"] = "black"
+    button3["bg"] = "white"
+    button3["fg"] = "black"
+    
 def call_scissor():
     global expression,win_count,tie_count,lose_count
     displayscissor()
@@ -84,7 +96,13 @@ def call_scissor():
     count1.set("Win : "+str(win_count))
     count2.set("Tie : "+str(tie_count))
     count3.set("Lose : "+str(lose_count))
-
+    button3["bg"] = "black"
+    button3["fg"] = "white"
+    button2["bg"] = "white"
+    button2["fg"] = "black"
+    button1["bg"] = "white"
+    button1["fg"] = "black"
+    
 def displayrock(side = "left"):
     if side=="left":
         global label1
@@ -138,11 +156,11 @@ def system_rand(n):
         displayscissor(side="right")
     return sys
 
-button1 = Button(root,text = "Rock",command=call_rock,width = 8,height=2,highlightcolor="black",cursor="hand2")
+button1 = Button(root,text = "Rock",command=call_rock,width = 8,height=2,highlightcolor="black",cursor="hand2",bg="white")
 button1.place(x=20,y=410)
-button2 = Button(root,text = "Paper",command= call_paper,width = 8,height=2,cursor="hand2")
+button2 = Button(root,text = "Paper",command= call_paper,width = 8,height=2,cursor="hand2",bg="white")
 button2.place(x=190,y=410)
-button3 = Button(root,text = "Scissor",command=call_scissor,width = 8,height=2,cursor="hand2")
+button3 = Button(root,text = "Scissor",command=call_scissor,width = 8,height=2,cursor="hand2",bg="white")
 button3.place(x=359,y=410)
 
 expression=""

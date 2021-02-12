@@ -1,7 +1,7 @@
 import numpy as np
 
 x_train = np.array([[1],[2],[3],[4],[5],[6],[7],[8],[9],[10]])
-y_train = np.array([0,1,2,0,1,2,0,1,2,0])
+y_train = np.array([0,1,2,2,2,2,2,2,2,2])
 y_train = y_train.reshape(len(y_train),1)
 
 from sklearn.preprocessing import StandardScaler
