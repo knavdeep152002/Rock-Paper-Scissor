@@ -34,7 +34,7 @@ win_count = tie_count = lose_count = 0
 def call_rock():
     global expression,win_count,tie_count,lose_count
     displayrock()
-    n = system_rand()
+    n = system_rand(0)
     if n==2:
         expression = "Win"
         win_count+=1
@@ -52,7 +52,7 @@ def call_rock():
 def call_paper():
     global expression,win_count,tie_count,lose_count
     displaypaper()
-    n = system_rand()
+    n = system_rand(1)
     if n==0:
         expression = "Win"
         win_count+=1
@@ -70,7 +70,7 @@ def call_paper():
 def call_scissor():
     global expression,win_count,tie_count,lose_count
     displayscissor()
-    n = system_rand()
+    n = system_rand(2)
     if n==1:
         expression = "Win"
         win_count+=1
@@ -128,15 +128,15 @@ def displayscissor(side="left"):
         label2.place(x=580,y=100)
 
 import random
-def system_rand():
-    n = random.randint(0,2)
-    if n==0:
+def system_rand(n):
+    sys = Rp.myfunction(n)
+    if sys==0:
         displayrock(side="right")
-    elif n==1:
+    elif sys==1:
         displaypaper(side="right")
     else:
         displayscissor(side="right")
-    return n
+    return sys
 
 button1 = Button(root,text = "Rock",command=call_rock,width = 8,height=2,highlightcolor="black",cursor="hand2")
 button1.place(x=20,y=410)
